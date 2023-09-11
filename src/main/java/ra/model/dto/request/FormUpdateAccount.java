@@ -1,24 +1,17 @@
-package ra.model.domain;
+package ra.model.dto.request;
 
-public class Account {
+import org.springframework.web.multipart.MultipartFile;
+
+public class FormUpdateAccount {
     private Long id;
     private String fullName;
     private String email;
     private String password;
     private String phone;
     private String address;
-    private String avatarUrl;
-    private boolean role = false;
-    private boolean status=true;
+    private MultipartFile avatarUrl;
 
-    public Account() {
-    }
-
-    public Account(String fullName, String email, String password, String phone) {
-        this.fullName = fullName;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
+    public FormUpdateAccount() {
     }
 
     public Long getId() {
@@ -69,27 +62,11 @@ public class Account {
         this.address = address;
     }
 
-    public String getAvatarUrl() {
+    public MultipartFile getAvatarUrl() {
         return avatarUrl;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
+    public void setAvatarUrl(MultipartFile avatarUrl) {
         this.avatarUrl = avatarUrl;
-    }
-
-    public boolean isRole() {
-        return role;
-    }
-
-    public void setRole(boolean role) {
-        this.role = role;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 }

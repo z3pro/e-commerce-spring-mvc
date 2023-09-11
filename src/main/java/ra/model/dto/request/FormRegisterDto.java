@@ -1,10 +1,23 @@
 package ra.model.dto.request;
 
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import ra.model.domain.Account;
+
+
+
+
 public class FormRegisterDto {
+    @Size(min = 6,message = "FullName must be more than 6 character!")
     private String fullName;
+    @Pattern(regexp = "c",message = "This email is invalid!")
     private String email;
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$",message = "Password is invalid!")
     private String password;
     private String rePassword;
+    @Pattern(regexp = "^0[0-9]{9,10}$",message = "Phone is invalid")
     private String phone;
 
     public FormRegisterDto() {
@@ -48,5 +61,9 @@ public class FormRegisterDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    public Account mapperToDomain(){
+        Account account = new Account(fullName,email,password,phone);
+        return account;
     }
 }

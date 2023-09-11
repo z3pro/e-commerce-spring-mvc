@@ -1,11 +1,15 @@
 package ra.config;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -17,9 +21,11 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"ra.controller"})
+@ComponentScan(basePackages = {"ra"})
+//@PropertySource("classpath:application.properties")
 public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     // application
+
     private ApplicationContext applicationContext;
 
     @Override
@@ -70,5 +76,12 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
                 CommonsMultipartResolver();
         multipartResolver.setMaxUploadSizePerFile(50*1024*1024); // 50MB
         return multipartResolver;
+    }
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasenames("application");
+        messageSource.setDefaultEncoding("utf-8");
+        return messageSource;
     }
 }

@@ -1,5 +1,7 @@
 package ra.model.dto.response;
 
+import ra.model.domain.Account;
+
 public class AccountDto {
     private Long id;
     private String fullName;
@@ -76,4 +78,18 @@ public class AccountDto {
     public void setStatus(boolean status) {
         this.status = status;
     }
+    public static AccountDto mapperDomainToDto(Account account){
+        AccountDto accountDto = new AccountDto();
+        accountDto.id = account.getId();
+        accountDto.fullName = account.getFullName();
+        accountDto.email = account.getEmail();
+        accountDto.phone = account.getPhone();
+        accountDto.address = account.getAddress();
+        accountDto.avatarUrl = account.getAvatarUrl();
+        accountDto.role = account.isRole();
+        accountDto.status = account.isStatus();
+        return accountDto;
+    }
+
+
 }

@@ -1,5 +1,7 @@
 package ra.dao.impl;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import ra.dao.IAccountDao;
 import ra.model.domain.Account;
 import ra.ultil.ConnectionDB;
@@ -10,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class AccountDao implements IAccountDao {
     @Override
     public Account login(String username, String password) {
