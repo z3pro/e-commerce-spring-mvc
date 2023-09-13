@@ -64,9 +64,13 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**"
-                                    ,"/js/**")
+                                    ,"/js/**"
+                                    ,"/fonts/**"
+                                    ,"/img/**")
                 .addResourceLocations("classpath:/assets/css/"
-                                    ,"classpath:/assets/js/" );
+                                    ,"classpath:/assets/js/"
+                                    ,"classpath:/assets/fonts/"
+                                    ,"classpath:/assets/img/");
 
     }
     // cấu hình kích thước upload tối đa
