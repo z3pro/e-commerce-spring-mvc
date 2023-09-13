@@ -48,6 +48,7 @@ public class ProductDao implements IProductDao {
         Connection conn = ConnectionDB.getConnection();
         try {
             CallableStatement call = conn.prepareCall("Select * from product where  id =?");
+            call.setLong(1,id);
             ResultSet rs = call.executeQuery();
             while (rs.next()){
                 pro =new Product();
@@ -59,7 +60,6 @@ public class ProductDao implements IProductDao {
                 pro.setStock(rs.getInt("stock"));
                 pro.setStatus(rs.getBoolean("status"));
                 pro.setCatalogId(rs.getInt("catalog_id"));
-
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

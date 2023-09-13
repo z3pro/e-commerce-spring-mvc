@@ -21,9 +21,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+<script>
+    const handleEditProduct= (id)=>{
+        console.log(id)
+
+        $.ajax({
+            url: `http://localhost:8080/admin/product/edit/${id}`,
+            method: 'GET',
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json'
+            },
+            success: function(data) {
+                console.log(data);
+                // đẩy dữ liệu lên html
+                $("#id_edit").val(data.id)
+                $("#name_edit").val(data.name)
+                $("#description_edit").val(data.description)
+                $("#price_edit").val(data.price)
+                $("#image_edit").attr("src","/upload/"+data.imageUrl)
+                let status = data.status?"true":"false";
+                $("#stock_edit").val(data.stock)
+                $("#status_edit").val(status)
+                $("#catalog_edit").val(data.catalogId)
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+</script>
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
@@ -250,7 +282,7 @@
                         <nav class="navbar navbar-expand-lg bg-light">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="#">
-                                    <button type="button" class="btn btn-success">+ Add new Product</button>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">+ Add new Product</button>
                                 </a>
                                 <form class="d-flex" role="search">
                                     <input class="form-control me-2 fst-italic" type="search"
@@ -270,7 +302,7 @@
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Description</th>
-                                <th>Created Date</th>
+                                <th>Stock</th>
                                 <th>Price</th>
                                 <th>Status</th>
                                 <th>Category</th>
@@ -278,166 +310,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Product 1</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 1</td>
+                            <tr th:each="p:${listPro}">
+                                <td th:text="${p.id}">1</td>
+                                <td th:text="${p.name}">Product 1</td>
+                                <td><img th:src="|/upload/${p.imageUrl}|" width="100" height="200" style="object-fit: cover" alt="#"></td>
+                                <td th:text="${p.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                <td th:text="${p.stock}">100</td>
+                                <td th:text="${p.price+' $'}">100 $</td>
+                                <td th:text="${p.status}?'Ready':'Hidden'">Ready</td>
+                                <td th:each="c:${listCat}" th:if="${c.id==p.catalogId}" th:text="${c.name}"></td>
                                 <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#editModal" th:onclick="|handleEditProduct(${p.id})|" >Edit</button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Product 2</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 2</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <a th:href="|/admin/product/delete/${p.id}|" onclick="return confirm('Bạn có chắc muốn xóa không')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Product 3</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 3</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Product 4</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 4</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Product 5</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 5</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Product 6</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 6</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Product 7</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 7</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Product 8</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 8</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Product 9</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 9</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Product 10</td>
-                                <td><img src="/img/avatars/avatar-5.jpg" width="30%" alt="#"></td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
-                                <td>28/10/2022</td>
-                                <td>100 $</td>
-                                <td>Ready</td>
-                                <td>Category 10</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
+
                             </tbody>
 
                         </table>
@@ -491,6 +381,122 @@
         </footer>
     </div>
 </div>
+
+<!-- Modal Add -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/admin/product/add" method="post" th:object="${pro}" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" th:field="*{name}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descriptions</label>
+                        <textarea class="form-control" th:field="*{description}" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="file" class="form-control" name="file" >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control" th:field="*{price}" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" th:field="*{stock}" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                       <select th:field="*{status}" class="form-control">
+                           <option value="true">Ready</option>
+                           <option value="false">Hidden</option>
+                       </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                       <select th:field="*{catalogId}" class="form-control">
+                           <option th:each="c:${listCat}" th:value="${c.id}" th:text="${c.name}"></option>
+                       </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >ADD</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal Edit -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/admin/product/update" enctype="multipart/form-data" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Edit Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Id</label>
+                        <input type="text" class="form-control" name="id" id="id_edit" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"> Name</label>
+                        <input type="text" class="form-control" name="name" id="name_edit">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descriptions</label>
+                        <textarea class="form-control" name="description" id="description_edit" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <img src="" width="100" height="150" style="object-fit: cover" alt="#" id="image_edit">
+                        <input type="file" class="form-control" name="file">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control" name="price" id="price_edit" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="stock" id="stock_edit" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" id="status_edit" class="form-control">
+                            <option value="true">Ready</option>
+                            <option value="false">Hidden</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select id="catalog_edit" name="catalogId" class="form-control">
+                            <option th:each="c:${listCat}" th:value="${c.id}" th:text="${c.name}"></option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                        UPDATE
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <script src="/js/app.js"></script>
 

@@ -314,7 +314,7 @@ const handleEditCatalog= (id)=>{
                                             data-bs-target="#editModal" th:onclick=|handleEditCatalog(${c.id})|>Edit</button>
                                 </td>
                                 <td>
-                                    <a th:href=|/admin/catalog/delete/${c.id}| onclick="return confirm('Bạn có chắc muốn xáo không')" class="btn btn-danger">Delete</a>
+                                    <a th:href="|/admin/catalog/delete/${c.id}|" onclick="return confirm('Bạn có chắc muốn xáo không')" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
 

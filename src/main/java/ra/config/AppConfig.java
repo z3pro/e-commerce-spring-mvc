@@ -22,10 +22,11 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"ra"})
-//@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.properties")
 public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     // application
 
+    private  String uploadPath ="C:\\Users\\hung1\\OneDrive\\Desktop\\ProjectMd4\\src\\main\\webapp\\WEB-INF\\upload\\";
     private ApplicationContext applicationContext;
 
     @Override
@@ -66,11 +67,13 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         registry.addResourceHandler("/css/**"
                                     ,"/js/**"
                                     ,"/fonts/**"
-                                    ,"/img/**")
+                                    ,"/img/**"
+                                    ,"/upload/**")
                 .addResourceLocations("classpath:/assets/css/"
                                     ,"classpath:/assets/js/"
                                     ,"classpath:/assets/fonts/"
-                                    ,"classpath:/assets/img/");
+                                    ,"classpath:/assets/img/"
+                                    ,"file:"+uploadPath);
 
     }
     // cấu hình kích thước upload tối đa
