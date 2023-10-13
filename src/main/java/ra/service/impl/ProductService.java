@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 @Service
 public class ProductService implements IProductService {
-    private String uploadPath = "C:\\Users\\hung1\\OneDrive\\Desktop\\ProjectMd4\\src\\main\\webapp\\WEB-INF\\upload\\";
+    private String uploadPath = "D:\\resources\\java\\rikeisoft -module 4\\ProjectMd4_demo\\src\\main\\webapp\\WEB-INF\\upload\\";
     @Autowired
     private IProductDao productDao;
     @Override
@@ -30,6 +30,7 @@ public class ProductService implements IProductService {
     public void save(Product product) {
 
     }
+
 
     @Override
     public void save(Product p, MultipartFile file) {
@@ -59,6 +60,16 @@ public class ProductService implements IProductService {
         }
         p.setImageUrl(fileName);
         productDao.save(p);
+    }
+
+    @Override
+    public List<Product> searchProductByCatalog(Long idCatalog) {
+        return productDao.findByCatalog(idCatalog);
+    }
+
+    @Override
+    public List<Product> findByName(String name) {
+        return productDao.findByName(name);
     }
 
     @Override

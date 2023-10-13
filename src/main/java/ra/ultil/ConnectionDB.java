@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class ConnectionDB {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/projects_md4";
+    private static final String URL = "jdbc:mysql://localhost:3306/module4";
     private static final String USER = "root";
-    private static final String PASS = "18061999";
+    private static final String PASS = "Dat267203k@";
     public static Connection getConnection(){
         Connection conn = null;
         try {

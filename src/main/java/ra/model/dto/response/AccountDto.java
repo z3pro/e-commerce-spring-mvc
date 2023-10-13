@@ -3,93 +3,110 @@ package ra.model.dto.response;
 import ra.model.domain.Account;
 
 public class AccountDto {
-    private Long id;
-    private String fullName;
-    private String email;
-    private String phone;
-    private String address;
-    private String avatarUrl;
-    private boolean role = false;
-    private boolean status=true;
 
-    public AccountDto() {
-    }
+  private Long id;
 
-    public Long getId() {
-        return id;
-    }
+  @Override
+  public String toString() {
+    return "AccountDto{" +
+        "id=" + id +
+        ", fullName='" + fullName + '\'' +
+        ", email='" + email + '\'' +
+        ", phone='" + phone + '\'' +
+        ", address='" + address + '\'' +
+        ", avatarUrl='" + avatarUrl + '\'' +
+        ", role=" + role +
+        ", status=" + status +
+        '}';
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  private String fullName;
+  private String email;
+  private String phone;
+  private String address;
+  private String avatarUrl;
+  private boolean role = false;
+  private boolean status = true;
 
-    public String getFullName() {
-        return fullName;
-    }
+  public AccountDto() {
+  }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getFullName() {
+    return fullName;
+  }
 
-    public String getPhone() {
-        return phone;
-    }
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public String getAddress() {
-        return address;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+  public String getPhone() {
+    return phone;
+  }
 
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
+  public String getAddress() {
+    return address;
+  }
 
-    public boolean isRole() {
-        return role;
-    }
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
-    public void setRole(boolean role) {
-        this.role = role;
-    }
+  public String getAvatarUrl() {
+    return avatarUrl;
+  }
 
-    public boolean isStatus() {
-        return status;
-    }
+  public void setAvatarUrl(String avatarUrl) {
+    this.avatarUrl = avatarUrl;
+  }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-    public static AccountDto mapperDomainToDto(Account account){
-        AccountDto accountDto = new AccountDto();
-        accountDto.id = account.getId();
-        accountDto.fullName = account.getFullName();
-        accountDto.email = account.getEmail();
-        accountDto.phone = account.getPhone();
-        accountDto.address = account.getAddress();
-        accountDto.avatarUrl = account.getAvatarUrl();
-        accountDto.role = account.isRole();
-        accountDto.status = account.isStatus();
-        return accountDto;
-    }
+  public boolean isRole() {
+    return role;
+  }
+
+  public void setRole(boolean role) {
+    this.role = role;
+  }
+
+  public boolean isStatus() {
+    return status;
+  }
+
+  public void setStatus(boolean status) {
+    this.status = status;
+  }
+
+  public static AccountDto mapperDomainToDto(Account account) {
+    AccountDto accountDto = new AccountDto();
+    accountDto.id = account.getId();
+    accountDto.fullName = account.getFullName();
+    accountDto.email = account.getEmail();
+    accountDto.phone = account.getPhone();
+    accountDto.address = account.getAddress();
+    accountDto.avatarUrl = account.getAvatarUrl();
+    accountDto.role = account.isRole();
+    accountDto.status = account.isStatus();
+    return accountDto;
+  }
 
 
 }

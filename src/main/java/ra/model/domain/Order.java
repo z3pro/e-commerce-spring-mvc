@@ -3,79 +3,80 @@ package ra.model.domain;
 import java.util.Date;
 
 public class Order {
-    private Long id;
-    private Long userId;
-    private String name;
-    private String phone;
-    private String address;
-    private byte status;
-    private double total;;
-    private Date orderAt;
 
-    public Order() {
-    }
+  private Long id;
+  private Long userId;
+  private String name;
+  private String phone;
+  private String address;
+  private byte status;
+  private double total;
+  private Date orderAt;
 
-    public Long getId() {
-        return id;
-    }
+  public Order() {
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public Long getUserId() {
-        return userId;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+  public Long getUserId() {
+    return userId;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setUserId(Long userId) {
+    this.userId = userId;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getPhone() {
-        return phone;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+  public String getPhone() {
+    return phone;
+  }
 
-    public String getAddress() {
-        return address;
-    }
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+  public String getAddress() {
+    return address;
+  }
 
-    public byte getStatus() {
-        return status;
-    }
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
-    public void setStatus(byte status) {
-        this.status = status;
-    }
+  public byte getStatus() {
+    return status;
+  }
 
-    public double getTotal() {
-        return total;
-    }
+  public void setStatus(byte status) {
+    this.status = status;
+  }
 
-    public void setTotal(double total) {
-        this.total = total;
-    }
+  public double getTotal() {
+    return total;
+  }
 
-    public Date getOrderAt() {
-        return orderAt;
-    }
+  public void setTotal(double total) {
+    this.total = total;
+  }
 
-    public void setOrderAt(Date orderAt) {
-        this.orderAt = orderAt;
-    }
+  public Date getOrderAt() {
+    return orderAt;
+  }
+
+  public void setOrderAt(Date orderAt) {
+    this.orderAt = orderAt;
+  }
 }
