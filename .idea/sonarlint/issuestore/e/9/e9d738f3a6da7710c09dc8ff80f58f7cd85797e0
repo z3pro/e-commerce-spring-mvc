@@ -1,0 +1,31 @@
+
+g	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“…¤Ç³1
+g	java:S112@"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8”…¤Ç³1
+g	java:S112["FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8”…¤Ç³1
+g	java:S112s"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8•…¤Ç³1
+h	java:S112‹"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¼Å¤Ç³1
+h
+java:S1192"FDefine a constant instead of duplicating this literal "total" 3 times.(»ö‰°ıÿÿÿÿ8½Å¤Ç³1
+j
+java:S1192"HDefine a constant instead of duplicating this literal "address" 3 times.(üÍİ¦ÿÿÿÿÿ8½Å¤Ç³1
+c
+java:S1192"FDefine a constant instead of duplicating this literal "phone" 3 times.(òè8¾Å¤Ç³1
+j
+java:S1192 "HDefine a constant instead of duplicating this literal "orderAt" 3 times.(±êÈïıÿÿÿÿ8¾Å¤Ç³1
+i
+java:S1192"GDefine a constant instead of duplicating this literal "userId" 3 times.(º—•Šüÿÿÿÿ8¾Å¤Ç³1
+c
+java:S1192"GDefine a constant instead of duplicating this literal "status" 3 times.(ÔÚ8¾Å¤Ç³1
+^
+java:S2259="BA "NullPointerException" could be thrown; "list" is nullable here.(Ø‚8è—¥Ç³1
+l
+java:S20950"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(‡„µê8Ç…¤Ç³1
+q
+java:S2095g"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¿ÃÛ–ÿÿÿÿÿ8Ç…¤Ç³1
+q
+java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(Õáìäûÿÿÿÿ8è—¥Ç³1
+q
+java:S2095L"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(ûª¼úùÿÿÿÿ8Ç…¤Ç³1
+q
+java:S2095~"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¿ÃÛ–ÿÿÿÿÿ8Ç…¤Ç³1
+U	java:S106{"9Replace this use of System.out or System.err by a logger.(…†Í™8”Ø§Ç³1

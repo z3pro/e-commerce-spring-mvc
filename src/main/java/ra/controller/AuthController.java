@@ -3,14 +3,19 @@ package ra.controller;
 import jakarta.validation.Valid;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ra.dao.impl.AccountDao;
 import ra.exception.UserNotFoundException;
+import ra.model.domain.Account;
 import ra.model.dto.request.FormLoginDto;
 import ra.model.dto.request.FormRegisterDto;
 import ra.model.dto.response.AccountDto;
@@ -27,6 +32,8 @@ public class AuthController {
 
   @Autowired
   private IAccountService accountService;
+  @Autowired
+  private AccountDao accountDao;
 
   @PostMapping("/handle-login")
   public String handleLogin(HttpSession session, RedirectAttributes redirectAttributes,
@@ -63,5 +70,18 @@ public class AuthController {
     }
     accountService.register(formRegisterDto);
     return "redirect:/form-login";
+  }
+
+  @PostMapping("/activeOrBlock")
+  public ResponseEntity<?> activeOrBlock(@RequestBody Long id) {
+    System.out.println(id);
+    Account accountDto = accountDao.findById(id);
+    if (accountDto.isStatus()) {
+      accountDto.setStatus(false);
+    } else {
+      accountDto.setStatus(true);
+    }
+    accountDao.save(accountDto);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 }

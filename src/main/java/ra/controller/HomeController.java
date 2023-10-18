@@ -78,6 +78,11 @@ public class HomeController {
     return new ModelAndView("form-login", "form_login", new FormLoginDto());
   }
 
+  @GetMapping("/buy-product")
+  public String buyProduct() {
+    return "buy-product";
+  }
+
   @GetMapping("/form-register")
   public String register(Model model) {
     model.addAttribute("form_register", new FormRegisterDto());

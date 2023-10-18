@@ -1,0 +1,33 @@
+
+g	java:S112%"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8å³Ğé±1
+g	java:S112@"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æ³Ğé±1
+g	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8æ³Ğé±1
+g	java:S112w"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ç³Ğé±1
+h	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ç³Ğé±1
+h	java:S112®"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8è³Ğé±1
+f
+java:S1192"JDefine a constant instead of duplicating this literal "image_url" 4 times.(µºÔR8ÎÚËÄ±1
+i
+java:S1192"LDefine a constant instead of duplicating this literal "description" 4 times.(©×Ï­8ÏÚËÄ±1
+m
+java:S1192!"KDefine a constant instead of duplicating this literal "catalog_id" 4 times.(Ü÷¯¢şÿÿÿÿ8ê³Ğé±1
+h
+java:S1192"FDefine a constant instead of duplicating this literal "price" 4 times.(¸ÌŒÎıÿÿÿÿ8ÏÚËÄ±1
+h
+java:S1192"FDefine a constant instead of duplicating this literal "stock" 4 times.(ßÊ…ûÿÿÿÿÿ8ÏÚËÄ±1
+d
+java:S1192 "GDefine a constant instead of duplicating this literal "status" 4 times.(ÃÑú’8ÏÚËÄ±1
+q
+java:S20951"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(ÉÈ“îÿÿÿÿÿ8ï´Ğé±1
+q
+java:S2095r"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(úß‹Íøÿÿÿÿ8ï´Ğé±1
+m
+java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(â“à¦8ï´Ğé±1
+q
+java:S2095Y"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¿ÃÛ–ÿÿÿÿÿ8ï´Ğé±1
+k
+java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(®Öän8ï´Ğé±1
+r
+java:S2095‚"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(­§Çùÿÿÿÿ8ğ´Ğé±1
+q
+java:S2095N"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¿ÃÛ–ÿÿÿÿÿ8ğ´Ğé±1

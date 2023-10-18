@@ -19,7 +19,7 @@ public class UserController {
   @GetMapping
   public String user(Model model) {
     List<AccountDto> accountList = accountService.getAll();
-    model.addAttribute("account", accountList);
+    model.addAttribute("accounts", accountList);
     return "/admin/user";
   }
 }

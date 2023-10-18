@@ -1,6 +1,7 @@
 package ra.model.domain;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 public class Order {
 
@@ -9,7 +10,7 @@ public class Order {
   private String name;
   private String phone;
   private String address;
-  private byte status;
+  private boolean status;
   private double total;
   private Date orderAt;
 
@@ -56,11 +57,11 @@ public class Order {
     this.address = address;
   }
 
-  public byte getStatus() {
+  public boolean getStatus() {
     return status;
   }
 
-  public void setStatus(byte status) {
+  public void setStatus(boolean status) {
     this.status = status;
   }
 

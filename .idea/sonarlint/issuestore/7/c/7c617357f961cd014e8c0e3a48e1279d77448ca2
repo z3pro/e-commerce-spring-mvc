@@ -5,11 +5,11 @@
 `	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
 j
 java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(èİäšıÿÿÿÿ
-j
-java:S2095\"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(ú®Àşÿÿÿÿ
-e
-java:S2095,"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(ôÈÊø
 e
 java:S2095D"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(‡¡ñı
+e
+java:S2095,"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(ôÈÊø
 j
 java:S2095I"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(¼¥ØÛüÿÿÿÿ
+j
+java:S2095\"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(ú®Àşÿÿÿÿ
